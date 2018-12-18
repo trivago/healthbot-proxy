@@ -5,6 +5,10 @@ RSpec.describe Healthcheck, type: :model do
     it { should validate_presence_of(:name) }
   end
 
+  describe "associations" do
+    it { should have_many(:endpoints) }
+  end
+
   describe "before save" do
     it "sets a slug based on the name" do
       model = create(:healthcheck, name: 'Sample')

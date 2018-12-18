@@ -1,6 +1,8 @@
 class Healthcheck < ApplicationRecord
   include Sluggi::Slugged
 
+  has_many :endpoints
+
   validates :name, presence: true
 
   def slug_value
