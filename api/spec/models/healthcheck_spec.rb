@@ -11,13 +11,5 @@ RSpec.describe Healthcheck, type: :model do
 
       expect(model.slug).to eq('sample')
     end
-
-    it "sets another slug if an entry with the same slug exists" do
-      create(:healthcheck, name: 'Sample')
-      allow(SecureRandom).to receive(:hex) { "1" }
-      model_two = create(:healthcheck, name: 'Sample')
-
-      expect(model_two.slug).to eq('sample-1')
-    end
   end
 end

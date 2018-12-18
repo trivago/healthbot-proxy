@@ -11,10 +11,18 @@ class ApplicationController < ActionController::API
   end
 
   def authenticate_token
-    AccessKey.find_by(token: http_authentication_token, active: true)
+    AccessKey.find_by(token: token)
   end
 
   def http_authentication_token
     ActionController::HttpAuthentication::Token.token_and_options(request).try(:first)
+  end
+
+  def token
+    query_string_token || http_authentication_token
+  end
+
+  def query_string_token
+    params[:token]
   end
 end
