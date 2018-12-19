@@ -8,12 +8,13 @@ class HealthcheckPinger
   end
 
   def self.ping_all(healthcheck)
-    healthcheck.endpoints.each { |ep| ping(ep) }
+    healthcheck.endpoints.map { |ep| ping(ep) }
   end
 
   def ping
     send_request = endpoint.pings.create!
     request_data(send_request)
+    send_request
   end
 
   private
