@@ -13,4 +13,10 @@ FactoryBot.define do
     name { "A random healthcheck" }
     sequence(:slug) {|s| "slug-#{s}" }
   end
+
+  factory :ping do
+    association :endpoint
+    status 0
+    response "sample response"
+  end
 end

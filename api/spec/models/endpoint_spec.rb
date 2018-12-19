@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe Endpoint, type: :model do
   describe "associations" do
     it { should belong_to(:healthcheck) }
+    it { should have_many(:pings) }
   end
 
   describe "validations" do

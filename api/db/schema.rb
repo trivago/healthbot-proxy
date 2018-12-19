@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181218162615) do
+ActiveRecord::Schema.define(version: 20181219150433) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,5 +42,14 @@ ActiveRecord::Schema.define(version: 20181218162615) do
     t.index ["slug"], name: "index_healthchecks_on_slug", unique: true
   end
 
+  create_table "pings", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "endpoint_id", null: false
+    t.integer "status", default: 0
+    t.text "response"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   add_foreign_key "endpoints", "healthchecks", on_delete: :cascade
+  add_foreign_key "pings", "endpoints", on_delete: :cascade
 end
