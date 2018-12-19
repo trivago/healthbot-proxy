@@ -15,5 +15,11 @@ RSpec.describe Healthcheck, type: :model do
 
       expect(model.slug).to eq('sample')
     end
+
+    it "sets a custom slug if it is already taken" do
+      create(:healthcheck, name: 'Sample')
+      model = create(:healthcheck, name: 'Sample')
+      expect(model).to be_present
+    end
   end
 end
