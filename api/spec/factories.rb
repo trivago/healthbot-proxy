@@ -11,5 +11,6 @@ FactoryBot.define do
 
   factory :healthcheck do
     name { "A random healthcheck" }
+    sequence(:slug) {|s| "slug-#{s}" }
   end
 end

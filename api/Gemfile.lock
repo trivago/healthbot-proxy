@@ -275,6 +275,9 @@ GEM
     tzinfo (1.2.5)
       thread_safe (~> 0.1)
     url_escape (2009.06.24)
+    validate_url (1.0.2)
+      activemodel (>= 3.0.0)
+      addressable
     web-console (3.6.2)
       actionview (>= 5.0)
       activemodel (>= 5.0)
@@ -332,6 +335,7 @@ DEPENDENCIES
   spring-watcher-listen (~> 2.0.0)
   timecop
   tzinfo-data
+  validate_url
   web-console (>= 3.3.0)
   whenever
 
