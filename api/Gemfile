@@ -94,4 +94,3 @@ gem 'activeadmin'
 
 # Plus integrations with:
 gem 'devise'
-gem "active_material", github: "vigetlabs/active_material"
