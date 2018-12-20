@@ -53,9 +53,24 @@ First time deployment - create yourself an admin user:
 
 Make sure you change the admin user/password later.
 
-Now proceed to login at `https://yourappname.herokuapp.com/admin`. The default
-username is: `admin@example.com` password: `password`. Create yourself a new
-healthcheck and a couple of endpoints.
+Now proceed to login at `https://yourappname.herokuapp.com/admin`.
+
+The default username is: `admin@example.com`. The password has been printed out during the
+seed step. Look for `PASSWORD`. Please also take note of the `TOKEN` that was printed during that
+step. That token will authorize your requests.
+
+* Click on `Healthchecks` in the header
+* Create yourself a new healthcheck
+* Add endpoints for each of your healthcheck, those are the ones the
+  application will ping
+
+Now let's rest pinging your healthcheck by sending a request to:
+
+```sh
+curl https://yourappname.herokuapp.com/YOUR-HEALTHCHECK-SLUG?token=TOKEN
+```
+
+Go to the admin panel, to the pings page. Your ping should have been received.
 
 ## Guidelines
 

@@ -5,15 +5,17 @@ def seed_data(msg)
   yield
 end
 
+token = Rails.env.development? ? '1' : SecureRandom.hex(3)
 seed_data("access key") do
-  FactoryBot.create(:access_key)
+  FactoryBot.create(:access_key, token: token)
 end
 
+password = Rails.env.development? ? 'password' : SecureRandom.hex(20)
 seed_data("active admin user") do
   AdminUser.create!(
     email: 'admin@example.com',
-    password: 'password',
-    password_confirmation: 'password'
+    password: password,
+    password_confirmation: password
   )
 end
 
@@ -35,4 +37,11 @@ seed_data("endpoint pings") do
       FactoryBot.create(:ping, endpoint: e)
     end
   end
+end
+
+seed_data("Access information") do
+  puts "Use the following information to access the site:"
+  puts "EMAIl: admin@example.com"
+  puts "PASSWORD: #{password}"
+  puts "TOKEN: #{token}"
 end
