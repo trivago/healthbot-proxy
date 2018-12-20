@@ -20,38 +20,24 @@ After you have cloned this repo, run this setup script to set up your machine
 with the necessary dependencies to run and test this app:
 
 ```sh
+cd /api/
 ./bin/setup
 ```
 
 It assumes you have a machine equipped with Ruby, Postgres, etc.
 
-## Docker
+## Structure
 
-Start the containers:
-
-```
-make start
-```
-
-Reset the database:
-
-```
-make reset_database
-```
-
-Run the tests:
-
-```
-make test
-```
+The folder `api` contains the backend that will receive all the requests from
+the clients. The folder `clients` contains programming language specific API
+libraries to interact with the API.
 
 ## Deployment
 
-Deployment is done automatically on master if all the tests pass. Deploy
-manually with:
+Deploy with:
 
 ```
-bin/deploy
+api/bin/deploy
 ```
 
 ## Guidelines
