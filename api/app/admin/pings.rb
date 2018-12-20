@@ -7,7 +7,7 @@ ActiveAdmin.register Ping do
 # or
 #
   permit_params do
-    [:endpoint, :status, :response]
+    [:endpoint_id, :status, :response]
   end
 
   menu priority: 2

@@ -13,4 +13,8 @@ ActiveAdmin.register Endpoint do
 # end
 
   menu priority: 2
+
+  permit_params do
+    [:healthcheck_id, :remote_url, :active]
+  end
 end

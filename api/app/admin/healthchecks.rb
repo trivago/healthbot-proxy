@@ -16,4 +16,11 @@ ActiveAdmin.register Healthcheck do
   end
 
   menu priority: 1
+
+  # Make it work with friendly id
+  controller do
+    def find_resource
+      scoped_collection.friendly.find(params[:id])
+    end
+  end
 end
