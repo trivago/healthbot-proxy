@@ -36,7 +36,7 @@ gem 'capistrano-rails'
 gem 'whenever'
 
 # Sluggified URLs
-gem 'sluggi'
+gem 'friendly_id', '~> 5.2.4' # Note: You MUST use 5.0.0 or greater for Rails 4.0+
 
 # Validate URLs
 gem 'validate_url'
@@ -88,3 +88,9 @@ gem 'rollbar'
 
 # nil blanks
 gem 'nilify_blanks'
+
+# Active Admin
+gem 'activeadmin'
+
+# Plus integrations with:
+gem 'devise'

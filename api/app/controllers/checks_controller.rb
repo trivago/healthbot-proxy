@@ -1,4 +1,4 @@
-class ChecksController < ApplicationController
+class ChecksController < ApiController
   before_action :require_valid_access_token
 
   rescue_from ActiveRecord::RecordNotFound do |err|
@@ -21,7 +21,7 @@ class ChecksController < ApplicationController
   private
 
   def find_check
-    result = Healthcheck.find_by_slug(params[:id])
+    result = Healthcheck.friendly.find(params[:id])
     raise ActiveRecord::RecordNotFound.new("not found") if result.blank?
     result
   end

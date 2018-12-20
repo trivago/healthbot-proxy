@@ -11,7 +11,7 @@ RSpec.describe Healthcheck, type: :model do
 
   describe "before save" do
     it "sets a slug based on the name" do
-      model = create(:healthcheck, name: 'Sample')
+      model = create(:healthcheck, name: 'Sample', slug: nil)
 
       expect(model.slug).to eq('sample')
     end

@@ -1,4 +1,7 @@
 FactoryBot.define do
+  factory :admin_user do
+    
+  end
   factory :access_key do
     sequence(:token)
   end

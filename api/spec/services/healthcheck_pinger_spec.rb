@@ -56,5 +56,16 @@ RSpec.describe HealthcheckPinger do
 
       expect(described_class).to have_received(:ping).exactly(2).times
     end
+
+    it "only pings active endpoints" do
+      hc = create(:healthcheck)
+      create(:endpoint, healthcheck: hc)
+      create(:endpoint, healthcheck: hc, active: false)
+      allow(described_class).to receive(:ping)
+
+      described_class.ping_all(hc)
+
+      expect(described_class).to have_received(:ping).exactly(1).times
+    end
   end
 end
