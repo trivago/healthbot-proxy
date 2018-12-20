@@ -1,5 +1,5 @@
 require 'factory_bot_rails'
-c
+
 def seed_data(msg)
   puts "=============== #{msg} ==============="
   yield

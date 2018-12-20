@@ -21,7 +21,7 @@ class ChecksController < ApiController
   private
 
   def find_check
-    result = Healthcheck.find_by_slug(params[:id])
+    result = Healthcheck.friendly.find(params[:id])
     raise ActiveRecord::RecordNotFound.new("not found") if result.blank?
     result
   end
