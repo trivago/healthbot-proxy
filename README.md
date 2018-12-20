@@ -34,11 +34,28 @@ libraries to interact with the API.
 
 ## Deployment
 
-Deploy with:
+The whole app works out of the box on heroku. First step is to create a new
+heroku app:
+
+`heroku create`
+
+Then execute:
 
 ```
-api/bin/deploy
+bash deploy.sh
 ```
+
+This will deploy the code on the heroku app you created.
+
+First time deployment - create yourself an admin user:
+
+`heroku run rake db:seed`
+
+Make sure you change the admin user/password later.
+
+Now proceed to login at `https://yourappname.herokuapp.com/admin`. The default
+username is: `admin@example.com` password: `password`. Create yourself a new
+healthcheck and a couple of endpoints.
 
 ## Guidelines
 
