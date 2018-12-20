@@ -8,7 +8,7 @@ class HealthcheckPinger
   end
 
   def self.ping_all(healthcheck)
-    healthcheck.endpoints.where(active: true).map { |ep| ping(ep) }
+    healthcheck.endpoints.active.map { |ep| ping(ep) }
   end
 
   def ping

@@ -4,6 +4,8 @@ class AccessKey < ApplicationRecord
   # generate unique token before save
   before_validation :generate_token, unless: :token
 
+  scope :active, -> { where(active: true) }
+
   private
 
   def generate_token

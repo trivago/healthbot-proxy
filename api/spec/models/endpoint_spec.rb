@@ -19,4 +19,18 @@ RSpec.describe Endpoint, type: :model do
       end
     end
   end
+
+  describe "scopes" do
+    describe ".active" do
+      it "returns all active endpoints" do
+        create(:endpoint, active: false)
+        ep = create(:endpoint, active: true)
+
+        actives = described_class.active
+        expect(actives.length).to eq(1)
+        expect(actives.first.id).to eq(ep.id)
+      end
+    end
+  end
+
 end

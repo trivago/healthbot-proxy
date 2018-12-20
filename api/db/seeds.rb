@@ -7,7 +7,7 @@ end
 
 token = Rails.env.development? ? '1' : SecureRandom.hex(3)
 seed_data("access key") do
-  FactoryBot.create(:access_key, token: token)
+  FactoryBot.create(:access_key, token: token, active: true)
 end
 
 password = Rails.env.development? ? 'password' : SecureRandom.hex(20)
