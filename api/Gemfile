@@ -88,3 +88,10 @@ gem 'rollbar'
 
 # nil blanks
 gem 'nilify_blanks'
+
+# Active Admin
+gem 'activeadmin'
+
+# Plus integrations with:
+gem 'devise'
+gem "active_material", github: "vigetlabs/active_material"

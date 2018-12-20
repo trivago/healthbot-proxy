@@ -1,4 +1,4 @@
-class ChecksController < ApplicationController
+class ChecksController < ApiController
   before_action :require_valid_access_token
 
   rescue_from ActiveRecord::RecordNotFound do |err|
