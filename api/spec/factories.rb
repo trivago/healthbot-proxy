@@ -19,7 +19,7 @@ FactoryBot.define do
 
   factory :ping do
     association :endpoint
-    status 0
-    response "sample response"
+    status { 0 }
+    response { "sample response" }
   end
 end
