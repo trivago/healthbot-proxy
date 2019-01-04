@@ -22,4 +22,14 @@ RSpec.describe Healthcheck, type: :model do
       expect(model).to be_present
     end
   end
+
+  describe "updating slug" do
+    it "should update the slug if the name changed" do
+      check = create(:healthcheck, name: 'Sample')
+
+      check.name ='Hans'
+      check.save!
+      expect(check.slug).to eq('hans')
+    end
+  end
 end
