@@ -1,8 +1,7 @@
-# HealtcheckProxyClient
+# Healthcheck Proxy Ruby Client
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/healtcheck_proxy_client`. To experiment with that code, run `bin/console` for an interactive prompt.
+This is a small wrapper for the healthcheck ruby API.
 
-TODO: Delete this and the text above, and describe your gem
 
 ## Installation
 
@@ -22,7 +21,27 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Create an initialiser in your rails app like this:
+
+```
+HealtcheckProxyClient.configure do |config|
+  config.endpoint = "https://trivago-healthcheck-proxy.herokuapp.com"
+  config.api_key  = "foobar"
+end
+```
+
+Call the library directly:
+
+```
+HealtcheckProxyClient.ping('my_healthcheck_name')
+
+```
+
+Or via a rake task:
+
+```
+bin/rails healthcheck:notify check=my_healthcheck_name
+```
 
 ## Development
 
