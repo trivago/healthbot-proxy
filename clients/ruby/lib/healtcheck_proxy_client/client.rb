@@ -14,7 +14,7 @@ module HealtcheckProxyClient
     end
 
     def ping
-      Faraday.get(url)
+      validate_response(Faraday.get(url))
     rescue Faraday::Error => e
       raise HttpError.new(e.message, http_error: e)
     end
@@ -24,7 +24,15 @@ module HealtcheckProxyClient
     def_delegators :@configuration, :api_key, :endpoint
 
     def url
-      "#{endpoint}/#{@healthcheck}/ping?token=#{api_key}"
+      "#{endpoint}/checks/#{@healthcheck}/ping?token=#{api_key}"
+    end
+
+    def validate_response(response)
+      return response if response.status == 200
+      raise HttpError.new(
+        "Invalid HTTP Status code: #{response.status}",
+        http_error: response
+      )
     end
   end
 end

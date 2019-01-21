@@ -1,7 +1,9 @@
+require 'ostruct'
+
 RSpec.describe HealtcheckProxyClient::Client do
   describe ".ping" do
     it "pings the given url" do
-      allow(Faraday).to receive(:get)
+      allow(Faraday).to receive(:get) { OpenStruct.new(status: 200) }
 
       described_class.ping(
         configuration: build_config,
@@ -14,6 +16,15 @@ RSpec.describe HealtcheckProxyClient::Client do
 
     it "raises an error" do
       allow(Faraday).to receive(:get).and_raise(Faraday::Error)
+
+      expect{
+        described_class
+          .ping(configuration: build_config, healthcheck: "test")
+      }.to raise_error(HealtcheckProxyClient::HttpError)
+    end
+
+    it "raises an error when the status is other than 200" do
+      allow(Faraday).to receive(:get) { OpenStruct.new(status: 404) }
 
       expect{
         described_class
