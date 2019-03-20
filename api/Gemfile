@@ -93,4 +93,4 @@ gem 'nilify_blanks'
 gem 'activeadmin'
 
 # Plus integrations with:
-gem 'devise'
+gem "devise", ">= 4.6.0"
